@@ -1,11 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
+
+  const [textColor, setTextColor] = useState('Black');
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={[styles.paragraph, {color: textColor}]}>"Este é o meu texto"</Text>
+
+      <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button
+              title="Mostrar em verde"
+              onPress={() => setTextColor('green')}/>
+          </View>
+
+          <View style={styles.button}>
+            <Button
+              title="Mostrar em azul"
+              onPress={() => setTextColor('blue')}/>
+          </View>
+
+          <View style={styles.button}>
+            <Button
+              title="Mostrar em vermelho"
+              onPress={() => setTextColor('red')}/>
+          </View>
+        </View>
     </View>
   );
 }
@@ -13,8 +35,22 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+    padding: 8,
   },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    width: '50%',
+    alignSelf: 'center',
+    marginVertical: 5,
+  },
+  button: {
+    margin: 5
+  }
 });
